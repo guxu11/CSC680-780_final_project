@@ -5,19 +5,18 @@ $ pip install google-generativeai
 """
 import json
 from apps.enums.response_status import ResponseStatus
-from pathlib import Path
 import google.generativeai as genai
 from PIL import Image
 from io import BytesIO
 import requests
 from apps.utils.utils import extract_code_from_markdown
-
+import os
 
 
 class GeminiService:
 
     def __init__(self):
-        genai.configure(api_key="AIzaSyAcO-IJAQDr4_Tlc7j1TM5F3lLo36GMTOs")
+        genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
         # Set up the model
         generation_config = {

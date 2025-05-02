@@ -31,6 +31,7 @@ class FileUploadService:
                 response.update({"data": {"url": file_url}})
         except Exception as e:
             response.update(UploadResponseStatus.FAIL)
+            print(e)
         return response
         
 

@@ -87,6 +87,7 @@ class RecipeDAO:
 
     def get_random_recipes(self):
         count = db.session.query(db.func.count(Recipe.recipeId)).scalar()
-        random_ids = random.sample(range(1, count + 1), HOMEPAGE_RECIPES_NUM)
+        print(count)
+        random_ids = random.sample(range(1, count + 1), min(HOMEPAGE_RECIPES_NUM, count))
         recipes = db.session.query(Recipe).filter(Recipe.recipeId.in_(random_ids)).all()
         return [recipe.to_dict() for recipe in recipes]

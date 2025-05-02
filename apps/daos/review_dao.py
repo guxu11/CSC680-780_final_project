@@ -47,13 +47,13 @@ class ReviewDAO:
             db.func.avg(Review.rating)).filter(Review.recipeId == recipeId).scalar()
         if avg_rating is None:
             return 5.0
-        return round(avg_rating, 1)
+        return float(round(avg_rating, 1))
         
     def get_avg_score_by_recipeId(self, recipeId):
         score = db.session.query(db.func.avg(Review.rating)).filter(Review.recipeId == recipeId).scalar()
         if score is None:
             return 5.0
-        return round(score, 1)
+        return float(round(score, 1))
 
     def get_avg_score_by_recipeIds(self, recipeIds):
         scores = db.session.query(
@@ -71,6 +71,6 @@ class ReviewDAO:
             # 找到对应的评分
             score = next((s for s in scores if s[0] == recipeId), None)
             # 如果找到了评分且评分不为None，则四舍五入并赋值，否则使用默认值
-            score_dict[recipeId] = round(score[1], 1) if score and score[1] is not None else 5.0
+            score_dict[recipeId] = float(round(score[1], 1)) if score and score[1] is not None else 5.0
 
         return score_dict
