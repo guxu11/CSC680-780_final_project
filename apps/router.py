@@ -13,7 +13,7 @@ from apps.services.file_upload_service import *
 
 recipe_service = RecipeService()
 userProfileService = UserProfileService()
-#file_upload_service = FileUploadService()
+file_upload_service = FileUploadService()
 favorite_service = FavoriteService()
 review_service = ReviewService()
 user_ingredeint_service = UserIngredientService()

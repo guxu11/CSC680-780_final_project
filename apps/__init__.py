@@ -15,7 +15,7 @@ load_dotenv(override=True)
 app = Flask(__name__)
 
 
-app.config['SQLALCHEMY_DATABASE_URI']= 'postgresql://postgres:ItcjForXjPOsTiVSWAlvkXtVTwaImolv@crossover.proxy.rlwy.net:29034/railway'
+app.config['SQLALCHEMY_DATABASE_URI']=os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 # app.debug = True
 
